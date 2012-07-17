@@ -25,6 +25,7 @@ h2. Installing the Application
 N/A
 
 h2. Getting Started
+
 The following are command to be run from the shell from the root of this application
 To start the web server : rails server
 To run the acceptance tests suite : cucumber
@@ -37,9 +38,11 @@ h2. Documentation and Support
 This is the only documentation.
 
 h4. Issues
+
 Issue will be managed in the GitHub repository - clone can come from https://github.com/RhysC/Trixie.git - see the associated GitHub issue board
 
 h2. Contributing
+
 This is a closed source private project. No unapproved downloads, forks, branches or clones are permitted.
 
 h2. Credits
@@ -48,4 +51,4 @@ Thanks to Stuart King for his advice on getting this project off the ground & Da
 
 h2. License
 
-This is copyrighted code. no usage or rights are inferred or allowed other than the that of the authors
+This is copyrighted code. No usage or rights are inferred or allowed other than the that of the authors
