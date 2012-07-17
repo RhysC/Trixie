@@ -6,7 +6,10 @@ Security For the masses
 TODO
 ====
 
-* remove redundant files
+* remove redundant files 
+  * see all the bootstrap js,css file
+  * all the generated css/coffee files in app
+  * run http://developer.yahoo.com/yslow/
 * ensure we are git ignoring the generated files
 * ensure the github repo is clean
 * review test coverage for exiting functionality - add test where coverage is inadequate
