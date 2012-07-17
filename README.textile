@@ -1,59 +1,51 @@
 h1. Trixie
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Trixie is the code name for our personal security framework. It is rails based application that will allow for social network integrated, 
+location and notification based personal security alerts
 
 h2. More Information
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Contact the author.
 
 h2. Required Gems
 
-This application requires this gem:
-
-* "rails":http://rubygems.org/gems/rails
+This applications requires are defined as per the gemfile int he root directory
+See "rails":http://rubygems.org/gems/rails
 
 h2. Dependencies
 
-To use this application, you will need:
+this application is built using:
 
-* The Ruby language (version 1.8.7 or 1.9.2)
-* Rails (version 3.0.4 or newer)
+* The Ruby language (1.9.3)
+* Rails (version 3.2.4)
+* MySql
 
 h2. Installing the Application
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+N/A
 
 h2. Getting Started
+The following are command to be run from the shell from the root of this application
+To start the web server : rails server
+To run the acceptance tests suite : cucumber
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+As this is a standard rails application, standard rails console command will work.
+The author is using bundler and RVM 
 
 h2. Documentation and Support
 
 This is the only documentation.
 
 h4. Issues
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-
-h2. Similar Projects
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Issue will be managed in the GitHub repository - clone can come from https://github.com/RhysC/Trixie.git - see the associated GitHub issue board
 
 h2. Contributing
-
-If you make improvements to this application, please share with others.
-
-* Fork the project on GitHub.
-* Make your feature addition or bug fix.
-* Commit with Git.
-* Send the author a pull request.
-
-If you add functionality to this application, create an alternative implementation, or build an application that is similar, please contact me and I'll add a note to the README so that others can find your work.
+This is a closed source private project. No unapproved downloads, forks, branches or clones are permitted.
 
 h2. Credits
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Thanks to Stuart King for his advice on getting this project off the ground & Daniel Kehoe (@rails_apps) for the RailsApps project
 
 h2. License
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+This is copyrighted code. no usage or rights are inferred or allowed other than the that of the authors

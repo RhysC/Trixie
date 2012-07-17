@@ -13,6 +13,8 @@ ensure the github repo is clean
 review test coverage for exiting functionality - add test where coverage is inadequate
 push to Heroku
 
+what is vendor dir for? when should i be using it vs app (i.e. JS, css etc)
+
 error pages need to be formatted appropriately
 
 investigate continuous deployment servers

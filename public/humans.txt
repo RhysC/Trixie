@@ -3,12 +3,16 @@
 
 
 /* TEAM */
-  <your title>: <your name>
-  Site:
-  Twitter:
-  Location:
+  Developer: Rhys Campbell
+  Site: http://rhysc.com
+  Twitter: @rhysc
+  
+  Boss : Tori Campbell (nee Pearson)
+  
+  Location: We work globally but mainly travel between London UK and Perth Australia
 
 /* THANKS */
+  Stuart King for his guidance on the project
   Daniel Kehoe (@rails_apps) for the RailsApps project
 
 /* SITE */
