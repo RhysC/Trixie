@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Rails3DeviseRspecCucumber2::Application.load_tasks
+Trixie::Application.load_tasks

@@ -1,4 +1,4 @@
-h1. Rails3 Devise Rspec Cucumber 2
+h1. Trixie
 
 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 

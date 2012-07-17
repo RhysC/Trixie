@@ -1,4 +1,4 @@
-Rails3DeviseRspecCucumber2::Application.routes.draw do
+Trixie::Application.routes.draw do
   authenticated :user do
     root :to => 'home#index'
   end
