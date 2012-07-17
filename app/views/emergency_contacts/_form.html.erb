@@ -1,0 +1,11 @@
+<%= form_for([@user, @user.emergency_contacts.build]) do |f| %>
+  <div class="field">
+    <%= f.label :name %> <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :email %> <%= f.text_field :email %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Create Emergency Contact", :class => "btn-large" %>
+  </div>
+<% end %>

@@ -1,0 +1,14 @@
+<h3>Welcome to Trixie</h3>
+
+<% if user_signed_in? %>
+    To to notify of distress follow the distress link above
+<% else %>
+	Please login to be able to notify of distress
+<% end %>
+
+Current users:
+<ul>
+<% @users.each do |user| %>
+  <li><%=link_to user.name, user %></li>
+<% end %>
+<ul>

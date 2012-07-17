@@ -1,0 +1,14 @@
+<h2><%= @user.name %></h2>
+<p><b>Email:</b> <%= @user.email if @user.email %></p>
+
+<h2>Emergency contacts</h2>
+<% if @user.emergency_contacts.empty? %>
+	<p>No emergency contacts registered <p/>
+<% else%>
+	<%= render @user.emergency_contacts %>
+<% end %>
+<% if user_signed_in? && current_user == @user%>
+	<h3>Add an Emergency Contact:</h3>
+		<%= render "emergency_contacts/form" %>
+<% end %>
+

@@ -1,0 +1,28 @@
+<% content_for :head do %>
+  <script type="text/javascript">
+/* TODO - need to test my javascript */
+		function createDistressRequest(position) {
+			$("#latitude").val(position.coords.latitude);
+			$("#longitude").val(position.coords.longitude);
+			$("form").submit();
+	    }
+		function onError(positionError) {
+			alert("there was an error!! code = " + positionError.code + ", message = " + positionError.message );
+	    }
+		
+		$(document).ready( function(){
+			// One-shot position request.
+			navigator.geolocation.getCurrentPosition(createDistressRequest, onError);
+		});
+  </script>
+<% end %>
+
+<h1>Distress</h1>
+<p>User: <%= current_user.name %></p>
+<p>We are attempting to find you location to send a distress notification...</p>
+<%= form_tag("/distress", :method => "post") do %>
+	<%= hidden_field_tag(:latitude) %>
+	<%= hidden_field_tag(:longitude) %>
+<% end %>
+
+

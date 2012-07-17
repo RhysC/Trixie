@@ -1,0 +1,11 @@
+<p>
+	<b>Contact:</b>
+	<%= emergency_contact.name %>
+	<br/><b>Email:</b>
+	<%= emergency_contact.email %>
+</p>
+<p>
+<%= link_to 'remove contact', [emergency_contact.user, emergency_contact],
+               :confirm => 'Are you sure?',
+               :method => :delete %>
+</p>

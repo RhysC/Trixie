@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+  <body>
+    <h1><%= @heading %></h1>
+    <p>
+		Please contact <%= @distressed_person.name %> on <%= @distressed_person.email %> to ensure they are ok<br/>
+		Last known location is :
+		<ul>
+			<li>Latitude : <%= @incident.coordinates.latitude %> </li>
+			<li>Longitude : <%= @incident.coordinates.longitude %> </li>
+		</ul>
+		view the map here : <%= distres_url( :id => @incident.id) %>
+    </p>
+    <p>Thanks for taking the time to care :) 
+	<br/>
+	Now this is obviously a contrived example - email is probably not the best form of notification in this instance
+	</p>
+  </body>
+</html>
