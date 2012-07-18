@@ -1,14 +1,31 @@
 <h3>Welcome to Trixie</h3>
-
-<% if user_signed_in? %>
-    To to notify of distress follow the distress link above
-<% else %>
-	Please login to be able to notify of distress
-<% end %>
-
-Current users:
+<p>
+  <% if user_signed_in? %>
+      To to notify of distress follow the distress link above
+  <% else %>
+  	Please login to be able to notify of distress
+  <% end %>
+</p>
+<p>
+Trixie is an integrated personal security system that focuses on you. 
+Trixie offers the following:
 <ul>
-<% @users.each do |user| %>
-  <li><%=link_to user.name, user %></li>
-<% end %>
-<ul>
+  <li>Allows you to quickly notify of your journey plans - "Just leaving work"</li>
+  <li>Allows you to tag your journey - "Getting in taxi with licence number #ABC123", you can even just add a photo from your phone to your journey</li>
+  <li>Make a distress notification - By using Trixie you can let others know that you are in distress; 
+      Family &amp; friends can be notified along with security firms*, increasing your chances of a timely response</li>
+</ul>
+All of the notifications are geographically tagged and timestamped so it is possible to trace your steps. 
+Trixie's service is also opt in, we are not big brother and do not intend to be - This service is for <strong>your</strong> peace of mind.
+</p>
+<p>
+We are interested in partner offerings, if you are a security firm that are interested in a modern approach to home and personal security please contact us
+</p>
+<p>
+  Current users:
+  <ul>
+    <% @users.each do |user| %>
+      <li><%=link_to user.name, user %></li>
+    <% end %>
+  <ul>
+</p>
