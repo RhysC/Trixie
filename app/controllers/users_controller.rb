@@ -19,18 +19,17 @@ class UsersController < ApplicationController
   #send the notifications
   #move to the tracking page which is just a GET with the incident ID
   
-  def distress #GET
-    #get the users coordinates, 
-    #send the coordinates as a POST,
-  end
-  def distress #temp action not the longterm startegy
-    #create the incident with the given cooridinates (which will inturn send the notifications)
-    #move to the tracking page which is just a GET with the incident ID
-  end
+  #def distress #GET
+  #  #get the users coordinates, 
+  #  #send the coordinates as a POST,
+  #end
+  #def distress #temp action not the longterm startegy
+  #  #create the incident with the given cooridinates (which will inturn send the notifications)
+  #  #move to the tracking page which is just a GET with the incident ID
+  #end
   
-  def tracking
-    #can the web server recieve emails (as initial comms format)? move to websockets now or later?
-    #for each EC wait for the response and set the incident EC as acknowledged
-    
-  end
+  #def tracking
+  #  #can the web server recieve emails (as initial comms format)? move to websockets now or later?
+  #  #for each EC wait for the response and set the incident EC as acknowledged  
+  #end
 end

@@ -1,9 +1,10 @@
 class DistressController < ApplicationController
   before_filter :authenticate_user!
   
-  def new #GET
-     error_and_redirect if current_user.emergency_contacts.empty?
-  end
+  #the "new" method is pretty silly as it can be done from any page, does need it own seperate functionality
+  #def new #GET
+  #   error_and_redirect if current_user.emergency_contacts.empty?
+  #end
   
   #the current geo location coordinates object as describe here :
   #interface Coordinates { double latitude; double longitude; double? altitude; double accuracy; double? altitudeAccuracy; double? heading; double? speed;};
@@ -19,6 +20,7 @@ class DistressController < ApplicationController
   end
   
   def show
+    puts "in show with #{params[:id]}"
     @incident = Incident.find(params[:id])
     @coordinates = @incident.coordinates 
   end

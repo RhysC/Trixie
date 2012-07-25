@@ -1,37 +1,54 @@
+  <script type="text/javascript">
+/* TODO - need to test my javascript and this needs to go in the js files, however im struggling with coffe script comiling to what i want so on hold*/
+		function createDistressRequest(position) {
+		  $("#latitude").val(position.coords.latitude);
+			$("#longitude").val(position.coords.longitude);
+	    }
+		function onError(positionError) {
+			alert("there was an error!! code = " + positionError.code + ", message = " + positionError.message );
+	    }
+		
+		$(document).ready( function(){
+			// One-shot position request.
+			navigator.geolocation.getCurrentPosition(createDistressRequest, onError);
+		});
+  </script>
+  
 <%= link_to "Trixie", root_path, :class => 'brand' %>
 <ul class="nav">
   <% if user_signed_in? %>
     <li>
-    <%= link_to('Distress', new_distres_path, :class=>"btn-small btn-danger", :method=>"get") %>        
+      <%= form_tag("/distress", :method => "post") do %>
+      	<%= hidden_field_tag(:latitude) %>
+      	<%= hidden_field_tag(:longitude) %>
+      	<%= submit_tag('Distress', :class=>"btn-small btn-danger") %>
+      <% end %>
     </li>
-	<li>
-    <%= link_to('Logout', destroy_user_session_path, :method=>'delete') %>        
+	  <li>
+      <%= link_to('Logout', destroy_user_session_path, :method=>'delete') %>        
     </li>
-  <% else %>
-    <li>
-    <%= link_to('Login', new_user_session_path)  %>  
-    </li>
-  <% end %>
-  <% if user_signed_in? %>
-  <li class="dropdown">
-    <a class="dropdown-toggle"
-       data-toggle="dropdown"
-       href="#">
-        Account
+    <li class="dropdown">
+      <a class="dropdown-toggle"
+         data-toggle="dropdown"
+         href="#">
+         Account
         <b class="caret"></b>
       </a>
-    <ul class="dropdown-menu">
-		<li>
-			<%= link_to('Edit account', edit_user_registration_path) %>
-		</li>
-		<li>
-			<%= link_to('Emergency contacts', current_user) %>
-		</li>
-    </ul>
-  </li>
+      <ul class="dropdown-menu">
+		    <li>
+			    <%= link_to('Edit account', edit_user_registration_path) %>
+		    </li>
+		    <li>
+			    <%= link_to('Emergency contacts', current_user) %>
+		    </li>
+      </ul>
+    </li>
   <% else %>
     <li>
-    <%= link_to('Sign up', new_user_registration_path)  %>
+      <%= link_to('Login', new_user_session_path)  %>  
+    </li>
+    <li>
+      <%= link_to('Sign up', new_user_registration_path)  %>
     </li>
   <% end %>
 </ul>

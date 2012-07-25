@@ -16,6 +16,7 @@ TODO
 * ensure we are git ignoring the generated files
 * ensure the github repo is clean
 * review test coverage for exiting functionality - add test where coverage is inadequate
+  * Need to add tests where there is no connectivity - i.e. can not hit google for email.. (what would i do in this instance?)
 * push to Heroku
 
 * error pages need to be formatted appropriately

@@ -9,8 +9,10 @@ class IncidentNotifier
   end
   
   def get_notifiers
-    return Proc.new { |incident|
-         IncidentMailer.distress_email(incident).deliver
-      }
+    funcs = []
+    #funcs << Proc.new { |incident| IncidentMailer.distress_email(incident).deliver  }
+    #TODO put a mock in here
+    funcs << Proc.new { |incident| puts "In the Incident notifier handling : #{incident.to_json} " }
   end
+  
 end

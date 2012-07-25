@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
-gem 'rails', '3.2.2.rc1'
+gem 'rails', '3.2.2'
 gem 'sqlite3'
-gem "devise", ">= 2.1.0.rc"
+gem "devise", ">= 2.1.0"
 gem "twitter-bootstrap-rails", ">= 2.0.3", :group => :assets
 gem "thin"
 
@@ -12,8 +12,8 @@ group :assets do
 end
 gem 'jquery-rails'
 
-gem "rspec-rails", ">= 2.9.0.rc2", :group => [:development, :test]
-gem "factory_girl_rails", ">= 2.0.0.rc", :group => [:development, :test]
+gem "rspec-rails", ">= 2.9.0", :group => [:development, :test]
+gem "factory_girl_rails", ">= 2.0.0", :group => [:development, :test]
 group :test do
 	gem "email_spec", ">= 1.2.1"
 	gem "cucumber-rails", ">= 1.3.0"

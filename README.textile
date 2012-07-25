@@ -27,8 +27,11 @@ N/A
 h2. Getting Started
 
 The following are command to be run from the shell from the root of this application
-To start the web server : rails server
-To run the acceptance tests suite : cucumber
+To start the web server : 
+  rails server
+To run the acceptance tests suite : 
+  rake spec
+  cucumber
 
 As this is a standard rails application, standard rails console command will work.
 The author is using bundler and RVM 
