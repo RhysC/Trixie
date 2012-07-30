@@ -29,7 +29,7 @@ h2. Getting Started
 The following are command to be run from the shell from the root of this application
 To start the web server : 
   rails server
-To run the acceptance tests suite : 
+To run the acceptance tests suite should reset test db first $> rake db:test:prepare
   rake spec
   cucumber
 

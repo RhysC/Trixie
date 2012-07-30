@@ -18,7 +18,7 @@
 <ul class="nav">
   <% if user_signed_in? %>
     <li>
-      <%= form_tag("/distress", :method => "post") do %>
+      <%= form_tag("/incidents", :method => "post") do %>
       	<%= hidden_field_tag(:latitude) %>
       	<%= hidden_field_tag(:longitude) %>
       	<%= submit_tag('Distress', :class=>"btn-small btn-danger") %>

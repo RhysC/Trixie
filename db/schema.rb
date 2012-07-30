@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120317133529) do
+ActiveRecord::Schema.define(:version => 20120728224000) do
 
   create_table "emergency_contacts", :force => true do |t|
     t.string   "name"
@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(:version => 20120317133529) do
   end
 
   add_index "emergency_contacts", ["user_id"], :name => "index_emergency_contacts_on_user_id"
+
+  create_table "incident_histories", :force => true do |t|
+    t.text     "comment"
+    t.datetime "raised_on"
+    t.text     "user_audit"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "incident_id"
+    t.text     "coordinates"
+    t.string   "picture"
+  end
 
   create_table "incidents", :force => true do |t|
     t.datetime "raised_on"

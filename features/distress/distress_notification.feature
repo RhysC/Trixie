@@ -43,11 +43,13 @@ Feature: Distress notification
 	      
   Scenario: Distressed user add key information
 	    Given I have raised a distress notification
+ 	      And I am on the distress notifications page
 	     When I add a photo to the event
-	     Then my emergency contacts are notified of the addition of the new information
-	      And the notification provides a link
-	      And the link shows the new content
-	      And the addition is time stamped and geo tagged
+	     Then the photo should be added to the incident
+	      And the update is time stamped and geo tagged
+	      And my emergency contacts are notified of the addition of the new information
+	      And the notification provides a link to the incident
+	      
 	  
 
 	

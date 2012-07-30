@@ -11,7 +11,7 @@ TODO
   * all the generated css/coffee files in app
   * run http://developer.yahoo.com/yslow/
     * look at header expiry and gzip compression - http://stackoverflow.com/questions/7792648/how-to-get-gzip-and-expires-header-on-a-rails-3-1-1-app-on-heroku-cedar
-    * why are all the asset fils adding a query string to the url? (eg ?body=1). surely this makes them less cacheable?
+    * why are all the asset files adding a query string to the url? (eg ?body=1). surely this makes them less cacheable?
     
 * ensure we are git ignoring the generated files
 * ensure the github repo is clean

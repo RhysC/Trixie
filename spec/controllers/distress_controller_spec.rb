@@ -56,7 +56,7 @@ describe DistressController do
       it "should redirect to distress/show" do
         subject.current_user.stub(:register_incident).and_return(@new_incident)
         post :create
-        response.should redirect_to(distres_path(:id => @new_incident.id))
+        response.should redirect_to(incident_path(:id => @new_incident.id))
       end
       
       it "should create a new incident for the current user with the given cooridinates" do

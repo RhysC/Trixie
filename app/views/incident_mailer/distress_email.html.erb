@@ -12,7 +12,7 @@
 			<li>Latitude : <%= @incident.coordinates.latitude %> </li>
 			<li>Longitude : <%= @incident.coordinates.longitude %> </li>
 		</ul>
-		view the map here : <%= distres_url( :id => @incident.id) %>
+		view the map here : <%= incident_url( :id => @incident.id) %>
     </p>
     <p>Thanks for taking the time to care :) 
 	<br/>

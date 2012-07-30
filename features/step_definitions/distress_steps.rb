@@ -1,4 +1,5 @@
 require 'rspec'
+require 'FileUtils'
 
 def current_path
   URI.parse(current_url).path
@@ -15,6 +16,23 @@ def raise_distress
   find(:xpath, "//input[@id='latitude']").set @lat
   find(:xpath, "//input[@id='longitude']").set @lng  
   click_button "Distress"
+end
+
+def clean_test_upload_folder
+  #Clean out the test upload folder
+  path = "#{Rails.root}/public/uploads/test/incident_history/"
+  if File.exists?(path) && File.directory?(path)
+      puts "removing test upload folder : #{path}"
+      FileUtils.rm_rf  path
+  #else
+  #    puts "test upload folder does not exist : #{path}"
+  end
+end
+Before do
+  clean_test_upload_folder  
+end
+After do
+  clean_test_upload_folder  
 end
 
 Given /^I do not have any emergency contacts registered$/ do
@@ -53,13 +71,19 @@ Then /^a new incident should created with the correct latitude and longitude$/ d
 end
 
 And /^a new notification should be sent with the correct incident$/ do
-  pending #- The incident spec use the ActionMailer::Base.deliveries however i would like this to be agnostic of mail
+  #pending #- The incident spec use the ActionMailer::Base.deliveries however i would like this to be agnostic of mail
   #IncidentNotifier.any_instance.should_recieve(:notify).with(Incident.last!)
+  ActionMailer::Base.deliveries.should have(1).things
 end
 
 Then /^I should be taken to the distress map screen$/ do
   incident = Incident.last!
-  current_path.should == distres_path(:id => incident.id)
+  current_path.should == incident_path(:id => incident.id)
+end
+
+And /^I am on the distress notifications page$/ do
+  incident = Incident.last!
+  current_path.should == incident_path(:id => incident.id)
 end
 
 And /^my location should be shown on screen$/ do
@@ -69,7 +93,16 @@ And /^my location should be shown on screen$/ do
 end
 
 When /^I add a photo to the event$/ do
-  pending
+  attach_file "picture", "#{Rails.root}/features/resources/Sunflower.gif"
+  click_button "upload"
+end
+
+Then /^the photo should be added to the incident$/ do
+  Incident.last.incident_histories.last.picture.url.should == "/uploads/test/incident_history/picture/1/Sunflower.gif"
+end
+
+Then /^the update is time stamped and geo tagged$/ do
+  pending # express the regexp above with the code you wish you had
 end
 
 When /^I dump.* the response$/ do
