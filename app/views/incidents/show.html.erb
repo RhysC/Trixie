@@ -1,0 +1,39 @@
+<% content_for :head do %>
+	<style type="text/css">
+		#map_canvas {width:90%; height:400px;}*/
+    </style>
+	<script type="text/javascript"  src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAzTXEatFCqqF1WW9AH3CF_aeDQZ-o_gjs&sensor=false">
+	</script>
+	<script type="text/javascript">
+	/* TODO - need to test my javascript */
+		function initialize(lat, lng) {
+			var myLatlng = new google.maps.LatLng(lat,lng);
+			var myOptions = {
+				center: myLatlng,
+				zoom: 16,
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			};
+			
+			var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+			
+			var marker = new google.maps.Marker({
+				position: myLatlng, 
+				map: map,
+				title:"Current perceived location"
+			});
+		}
+		$(document).ready( function(){
+			initialize(<%= @coordinates.latitude %>, <%= @coordinates.longitude %>)
+			$("#map_canvas").append("...loading map");
+		});
+	</script>
+<% end %>
+<h1>Distress - tracking</h1>
+<p>User: <%= current_user.name %></p>
+<div id="map_canvas">
+	We are attempting to find you location to send a distress notification...
+</div>
+<%= form_for @incident, :html => {:multipart => true} do |f| %>
+  <%= file_field_tag 'picture' %>
+	<%= submit_tag('upload', :class=>"btn-small") %>
+<% end %>
