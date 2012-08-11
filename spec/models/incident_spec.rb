@@ -9,9 +9,9 @@ describe Incident do
     before(:each) do
       @expected_date = stub_out_now()
     end
-    it "should default the raised on date to now" do
+    it "should default the audit date to now" do
       incident = Incident.create(:user => set_up_user(), :coordinates => set_up_coordinates()) 
-      incident.raised_on.should == @expected_date
+      incident.created_at.should == @expected_date
     end
     it "should have the user that raise the incident" do
         user = set_up_user()
@@ -37,7 +37,7 @@ describe Incident do
     end
    
      it "should create an incident with the current date" do
-       @incident.raised_on.should == @expected_date
+       @incident.created_at.should == @expected_date
      end
      it "should persist a copy of profiles own current objects graphs state" do
        @incident.user_audit.name.should == @user.name

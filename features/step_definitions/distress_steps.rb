@@ -1,5 +1,6 @@
 require 'rspec'
 require 'FileUtils'
+require 'active_support'
 
 def current_path
   URI.parse(current_url).path
@@ -24,8 +25,6 @@ def clean_test_upload_folder
   if File.exists?(path) && File.directory?(path)
       puts "removing test upload folder : #{path}"
       FileUtils.rm_rf  path
-  #else
-  #    puts "test upload folder does not exist : #{path}"
   end
 end
 Before do
@@ -92,18 +91,36 @@ And /^my location should be shown on screen$/ do
   page.should have_content "initialize(#{@lat}, #{@lng})"
 end
 
-When /^I add a photo to the event$/ do
+When /^I add a photo and comment to the event$/ do
   attach_file "picture", "#{Rails.root}/features/resources/Sunflower.gif"
-  click_button "upload"
+  @comment = ('a'..'z').to_a.shuffle[0,8].join
+  fill_in "comment" , :with => @comment
+  click_button "update"
 end
 
 Then /^the photo should be added to the incident$/ do
   Incident.last.incident_histories.last.picture.url.should == "/uploads/test/incident_history/picture/1/Sunflower.gif"
 end
 
-Then /^the update is time stamped and geo tagged$/ do
-  pending # express the regexp above with the code you wish you had
+Then /^the comment should be added to the incident$/ do
+  Incident.last.incident_histories.last.comment.should == @comment
 end
+
+Then /^the update is time stamped and geo tagged$/ do
+  incident_update = Incident.last.incident_histories.last
+  incident_update.created_at.should be_between(5.seconds.ago, Time.now)
+end
+
+Then /^my emergency contacts are notified of the addition of the new information$/ do
+  ActionMailer::Base.deliveries.should have(2).things
+end
+
+Then /^the notification provides a link to the incident$/ do
+  incidentid = Incident.last.id
+  ActionMailer::Base.deliveries.last.body.should include "/incidents/#{incidentid}"
+end
+
+
 
 When /^I dump.* the response$/ do
   puts body

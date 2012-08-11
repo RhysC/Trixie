@@ -7,16 +7,21 @@ class Incident < ActiveRecord::Base
   serialize :coordinates, Coordinates
   
   after_initialize :set_defaults
+  after_save :notify
   
   def update_with(params)
     coordinates = Coordinates.from_params(params)
-    incident_histories.create(:picture => params[:picture], :coordinates => coordinates)
+    incident_histories.create(:picture => params[:picture], :coordinates => coordinates, :comment => params[:comment])
+  end
+  
+  def notify
+    IncidentNotifier.new().notify(self)
   end
   
   private
   def set_defaults
-    write_attribute(:raised_on, Time.now)
     self.user_audit = UserAudit.new()
     self.user_audit.set(self.user)
   end
+  
 end

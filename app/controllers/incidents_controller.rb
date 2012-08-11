@@ -1,8 +1,6 @@
 class IncidentsController < ApplicationController
   before_filter :authenticate_user!
-  
-  #TODO - i guess this controller should be calle dthe IncidentsController to follow convention - distress may just be a flag on the model
-  
+   
   #the current geo location coordinates object as describe here :
   #interface Coordinates { double latitude; double longitude; double? altitude; double accuracy; double? altitudeAccuracy; double? heading; double? speed;};
   
@@ -17,17 +15,14 @@ class IncidentsController < ApplicationController
   end
   
   def show
-    puts "in show with #{params[:id]}"
     @incident = Incident.find(params[:id])
     @coordinates = @incident.coordinates 
   end
   
   def update
-    puts params
-    @incident = Incident.find(params[:id])
-    @incident.update_with(params)
-    @incident.save!
-    #puts "incident saved with the following pic details - url = #{incidenthistory.picture.url}, current_path = #{incidenthistory.picture.current_path}, pic id = #{incidenthistory.picture.identifier}"
+    incident = Incident.find(params[:id])
+    incident.update_with(params)
+    incident.save!
     redirect_to :action => 'show', :id => params[:id]
   end
   

@@ -10,9 +10,6 @@ class User < ActiveRecord::Base
   has_many :incidents
   
   def register_incident(coordinates)
-    incident = Incident.create(:user => self, :coordinates => coordinates)  
-    #IncidentMailer.distress_email(incident).deliver  #TODO - should use the incident_notifier here
-    IncidentNotifier.new().notify(incident)
-    return incident 
+    return Incident.create(:user => self, :coordinates => coordinates)  
   end
 end

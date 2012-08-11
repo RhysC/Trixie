@@ -6,7 +6,9 @@ describe IncidentNotifier do
     incident = "my incident"
     notifier_mock = mock('notifier')
     notifier_mock.should_receive(:notify).with(incident)
-    IncidentNotifier.new([notifier_mock]).notify(incident)
+    notifier = IncidentNotifier.new()
+    notifier.stub(:get_notifiers).and_return([notifier_mock].map {|n| (n.method :notify) })
+    notifier.notify(incident)
   end
   
   it "should call each notifer implementation when sending when there are multiple notifiers" do
@@ -17,16 +19,9 @@ describe IncidentNotifier do
     notifier_mock1.should_receive(:notify).with(incident)
     notifier_mock2.should_receive(:notify).with(incident)
     notifier_mock3.should_receive(:notify).with(incident)
-    IncidentNotifier.new([notifier_mock1,notifier_mock2,notifier_mock3]).notify(incident)
+    notifier = IncidentNotifier.new()
+    notifier.stub(:get_notifiers).and_return([notifier_mock1,notifier_mock2,notifier_mock3].map {|n| (n.method :notify) })
+    notifier.notify(incident)
   end
   
-end
-
-class IncidentNotifier
-  def initialize(notifier)
-    @notifier = notifier
-  end 
-  def get_notifiers
-    return @notifier.map {|n| (n.method :notify) }
-  end
 end
